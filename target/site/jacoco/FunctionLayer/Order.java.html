@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Order.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LegoHouseProject</a> &gt; <a href="index.source.html" class="el_package">FunctionLayer</a> &gt; <span class="el_source">Order.java</span></div><h1>Order.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package FunctionLayer;
+
+import java.time.LocalDate;
+
+/**
+ *
+ * @author Rasmus2
+ */
+public class Order {
+
+    private int order_id;
+    private int user_id;
+    private LocalDate order_date;
+    private float order_length;
+    private float order_width;
+    private float order_height;
+<span class="nc" id="L22">    private int order_status = 0;</span>
+
+<span class="nc" id="L24">    public Order(int user_id, LocalDate order_date, float order_length, float order_width, float order_height) {</span>
+<span class="nc" id="L25">        this.user_id = user_id;</span>
+<span class="nc" id="L26">        this.order_date = order_date;</span>
+<span class="nc" id="L27">        this.order_length = order_length;</span>
+<span class="nc" id="L28">        this.order_width = order_width;</span>
+<span class="nc" id="L29">        this.order_height = order_height;</span>
+<span class="nc" id="L30">    }</span>
+
+    public void setOrder_status(int order_status) {
+<span class="nc" id="L33">        this.order_status = order_status;</span>
+<span class="nc" id="L34">    }</span>
+
+    public int getOrder_id() {
+<span class="nc" id="L37">        return order_id;</span>
+    }
+
+    public void setOrder_id(int order_id) {
+<span class="nc" id="L41">        this.order_id = order_id;</span>
+<span class="nc" id="L42">    }</span>
+
+    public int getUser_id() {
+<span class="nc" id="L45">        return user_id;</span>
+    }
+
+    public LocalDate getOrder_date() {
+<span class="nc" id="L49">        return order_date;</span>
+    }
+
+    public float getOrder_length() {
+<span class="nc" id="L53">        return order_length;</span>
+    }
+
+    public float getOrder_width() {
+<span class="nc" id="L57">        return order_width;</span>
+    }
+
+    public float getOrder_height() {
+<span class="nc" id="L61">        return order_height;</span>
+    }
+
+    public int getOrder_status() {
+<span class="nc" id="L65">        return order_status;</span>
+    }
+
+    public String getSent() {
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        if (order_status == 1) {</span>
+<span class="nc" id="L70">            return &quot;Sent&quot;;</span>
+        } else {
+<span class="nc" id="L72">            return &quot;Not sent&quot;;</span>
+        }
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L78">        return &quot;Order_id=&quot; + order_id + &quot;, Order_date=&quot; + order_date + &quot;, Order_length=&quot; + order_length + &quot;, Order_width=&quot; + order_width + &quot;, Order_height=&quot; + order_height + &quot;, Order_status=&quot; + getSent();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

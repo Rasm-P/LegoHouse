@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Register.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LegoHouseProject</a> &gt; <a href="index.source.html" class="el_package">PresentationLayer</a> &gt; <span class="el_source">Register.java</span></div><h1>Register.java</h1><pre class="source lang-java linenums">package PresentationLayer;
+
+import FunctionLayer.LogicFacade;
+import FunctionLayer.LoginSampleException;
+import FunctionLayer.User;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+<span class="nc" id="L10">public class Register extends Command {</span>
+
+    @Override
+    String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
+<span class="nc" id="L14">        String email = request.getParameter( &quot;email&quot; );</span>
+<span class="nc" id="L15">        String password1 = request.getParameter( &quot;password1&quot; );</span>
+<span class="nc" id="L16">        String password2 = request.getParameter( &quot;password2&quot; );</span>
+<span class="nc bnc" id="L17" title="All 6 branches missed.">        if ( password1.equals( password2 ) &amp;&amp; !password1.isEmpty() &amp;&amp; !email.isEmpty()) {</span>
+<span class="nc" id="L18">            User user = LogicFacade.createUser( email, password1 );</span>
+<span class="nc" id="L19">            HttpSession session = request.getSession();</span>
+<span class="nc" id="L20">            session.setAttribute( &quot;user&quot;, user );</span>
+<span class="nc" id="L21">            session.setAttribute( &quot;role&quot;, user.getRole() );</span>
+<span class="nc" id="L22">            return user.getRole() + &quot;page&quot;;</span>
+        } else {
+<span class="nc" id="L24">            throw new LoginSampleException( &quot;the two passwords did not match, or was too short&quot; );</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
