@@ -5,8 +5,8 @@
  */
 package DBAccess;
 
-import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
+import FunctionLayer.OrderSampleException;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class OrderMapper {
 
-    public static void createOrder(Order order, User user) throws LoginSampleException {
+    public static void createOrder(Order order, User user) throws OrderSampleException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO `useradmin`.`orders`(`user_id`,`order_date`,`order_length`,`order_width`,`order_heigth`,`order_status`) VALUES(?,?,?,?,?,?)";
@@ -39,11 +39,11 @@ public class OrderMapper {
             int id = ids.getInt(1);
             order.setOrder_id(id);
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new OrderSampleException(ex.getMessage());
         }
     }
 
-    public static List<Order> getAllOrders() throws LoginSampleException {
+    public static List<Order> getAllOrders() throws OrderSampleException {
         List<Order> list = new ArrayList();
         try {
             Connection con = Connector.connection();
@@ -58,11 +58,11 @@ public class OrderMapper {
             }
             return list;
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new OrderSampleException(ex.getMessage());
         }
     }
 
-    public static List<Order> getOrderHistory(User user) throws LoginSampleException {
+    public static List<Order> getOrderHistory(User user) throws OrderSampleException {
         List<Order> list = new ArrayList();
         try {
             Connection con = Connector.connection();
@@ -79,11 +79,11 @@ public class OrderMapper {
             }
             return list;
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new OrderSampleException(ex.getMessage());
         }
     }
 
-    public static void changeOrderStatus(int status, Order order) throws LoginSampleException {
+    public static void changeOrderStatus(int status, Order order) throws OrderSampleException {
         try {
             Connection con = Connector.connection();
             String SQL = "UPDATE `useradmin`.`orders` SET `order_status` =? WHERE `order_id` =?";
@@ -92,11 +92,11 @@ public class OrderMapper {
             ps.setInt(2, order.getOrder_id());
             ps.executeUpdate();
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new OrderSampleException(ex.getMessage());
         }
     }
 
-    public static Order findSpecificOrder(int order_id) throws LoginSampleException {
+    public static Order findSpecificOrder(int order_id) throws OrderSampleException {
         try {
             Connection con = Connector.connection();
             String SQL = "SELECT * FROM useradmin.orders WHERE order_id=?";
@@ -109,15 +109,11 @@ public class OrderMapper {
                 order.setOrder_status(rs.getInt(7));
                 return order;
             } else {
-                throw new LoginSampleException("Could not validate user");
+                throw new OrderSampleException("Could not find order");
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new OrderSampleException(ex.getMessage());
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        System.out.println(getAllOrders());
     }
 
 }

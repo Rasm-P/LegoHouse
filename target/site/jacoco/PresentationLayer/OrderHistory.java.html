@@ -5,11 +5,11 @@
  */
 package PresentationLayer;
 
-import DBAccess.OrderMapper;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 import FunctionLayer.Order;
+import FunctionLayer.OrderSampleException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 <span class="nc" id="L22">public class OrderHistory extends Command {</span>
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderSampleException {
 <span class="nc" id="L26">        String email = request.getParameter(&quot;email&quot;);</span>
 <span class="nc" id="L27">        String password = request.getParameter(&quot;password&quot;);</span>
 <span class="nc" id="L28">        User user = LogicFacade.login(email, password);</span>

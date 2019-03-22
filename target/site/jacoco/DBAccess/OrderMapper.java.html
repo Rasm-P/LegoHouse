@@ -5,8 +5,8 @@
  */
 package DBAccess;
 
-import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
+import FunctionLayer.OrderSampleException;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 <span class="nc" id="L23">public class OrderMapper {</span>
 
-    public static void createOrder(Order order, User user) throws LoginSampleException {
+    public static void createOrder(Order order, User user) throws OrderSampleException {
         try {
 <span class="nc" id="L27">            Connection con = Connector.connection();</span>
 <span class="nc" id="L28">            String SQL = &quot;INSERT INTO `useradmin`.`orders`(`user_id`,`order_date`,`order_length`,`order_width`,`order_heigth`,`order_status`) VALUES(?,?,?,?,?,?)&quot;;</span>
@@ -39,11 +39,11 @@ import java.util.List;
 <span class="nc" id="L39">            int id = ids.getInt(1);</span>
 <span class="nc" id="L40">            order.setOrder_id(id);</span>
 <span class="nc" id="L41">        } catch (SQLException | ClassNotFoundException ex) {</span>
-<span class="nc" id="L42">            throw new LoginSampleException(ex.getMessage());</span>
+<span class="nc" id="L42">            throw new OrderSampleException(ex.getMessage());</span>
 <span class="nc" id="L43">        }</span>
 <span class="nc" id="L44">    }</span>
 
-    public static List&lt;Order&gt; getAllOrders() throws LoginSampleException {
+    public static List&lt;Order&gt; getAllOrders() throws OrderSampleException {
 <span class="nc" id="L47">        List&lt;Order&gt; list = new ArrayList();</span>
         try {
 <span class="nc" id="L49">            Connection con = Connector.connection();</span>
@@ -58,11 +58,11 @@ import java.util.List;
 <span class="nc" id="L58">            }</span>
 <span class="nc" id="L59">            return list;</span>
 <span class="nc" id="L60">        } catch (ClassNotFoundException | SQLException ex) {</span>
-<span class="nc" id="L61">            throw new LoginSampleException(ex.getMessage());</span>
+<span class="nc" id="L61">            throw new OrderSampleException(ex.getMessage());</span>
         }
     }
 
-    public static List&lt;Order&gt; getOrderHistory(User user) throws LoginSampleException {
+    public static List&lt;Order&gt; getOrderHistory(User user) throws OrderSampleException {
 <span class="nc" id="L66">        List&lt;Order&gt; list = new ArrayList();</span>
         try {
 <span class="nc" id="L68">            Connection con = Connector.connection();</span>
@@ -79,11 +79,11 @@ import java.util.List;
 <span class="nc" id="L79">            }</span>
 <span class="nc" id="L80">            return list;</span>
 <span class="nc" id="L81">        } catch (ClassNotFoundException | SQLException ex) {</span>
-<span class="nc" id="L82">            throw new LoginSampleException(ex.getMessage());</span>
+<span class="nc" id="L82">            throw new OrderSampleException(ex.getMessage());</span>
         }
     }
 
-    public static void changeOrderStatus(int status, Order order) throws LoginSampleException {
+    public static void changeOrderStatus(int status, Order order) throws OrderSampleException {
         try {
 <span class="nc" id="L88">            Connection con = Connector.connection();</span>
 <span class="nc" id="L89">            String SQL = &quot;UPDATE `useradmin`.`orders` SET `order_status` =? WHERE `order_id` =?&quot;;</span>
@@ -92,11 +92,11 @@ import java.util.List;
 <span class="nc" id="L92">            ps.setInt(2, order.getOrder_id());</span>
 <span class="nc" id="L93">            ps.executeUpdate();</span>
 <span class="nc" id="L94">        } catch (ClassNotFoundException | SQLException ex) {</span>
-<span class="nc" id="L95">            throw new LoginSampleException(ex.getMessage());</span>
+<span class="nc" id="L95">            throw new OrderSampleException(ex.getMessage());</span>
 <span class="nc" id="L96">        }</span>
 <span class="nc" id="L97">    }</span>
 
-    public static Order findSpecificOrder(int order_id) throws LoginSampleException {
+    public static Order findSpecificOrder(int order_id) throws OrderSampleException {
         try {
 <span class="nc" id="L101">            Connection con = Connector.connection();</span>
 <span class="nc" id="L102">            String SQL = &quot;SELECT * FROM useradmin.orders WHERE order_id=?&quot;;</span>
@@ -109,16 +109,12 @@ import java.util.List;
 <span class="nc" id="L109">                order.setOrder_status(rs.getInt(7));</span>
 <span class="nc" id="L110">                return order;</span>
             } else {
-<span class="nc" id="L112">                throw new LoginSampleException(&quot;Could not validate user&quot;);</span>
+<span class="nc" id="L112">                throw new OrderSampleException(&quot;Could not find order&quot;);</span>
             }
 <span class="nc" id="L114">        } catch (ClassNotFoundException | SQLException ex) {</span>
-<span class="nc" id="L115">            throw new LoginSampleException(ex.getMessage());</span>
+<span class="nc" id="L115">            throw new OrderSampleException(ex.getMessage());</span>
         }
     }
-
-    public static void main(String[] args) throws Exception {
-<span class="nc" id="L120">        System.out.println(getAllOrders());</span>
-<span class="nc" id="L121">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

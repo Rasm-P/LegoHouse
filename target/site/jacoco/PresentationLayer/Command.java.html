@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Command.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LegoHouseProject</a> &gt; <a href="index.source.html" class="el_package">PresentationLayer</a> &gt; <span class="el_source">Command.java</span></div><h1>Command.java</h1><pre class="source lang-java linenums">package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.OrderSampleException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<span class="nc" id="L8">abstract class Command {</span>
+<span class="nc" id="L9">abstract class Command {</span>
 
     private static HashMap&lt;String, Command&gt; commands;
 
     private static void initCommands() {
-<span class="nc" id="L13">        commands = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L14">        commands.put( &quot;login&quot;, new Login() );</span>
-<span class="nc" id="L15">        commands.put( &quot;register&quot;, new Register() );</span>
-<span class="nc" id="L16">        commands.put( &quot;main&quot;, new MainPage() );</span>
-<span class="nc" id="L17">        commands.put( &quot;order&quot;, new Orders() );</span>
-<span class="nc" id="L18">        commands.put( &quot;finalizeorder&quot;, new FinalizeOrder() );</span>
-<span class="nc" id="L19">        commands.put( &quot;orderstatus&quot;, new OrderStatus() );</span>
-<span class="nc" id="L20">        commands.put( &quot;history&quot;, new OrderHistory() );</span>
-<span class="nc" id="L21">        commands.put( &quot;stykliste&quot;, new ShowStykliste() );</span>
-<span class="nc" id="L22">        commands.put( &quot;logout&quot;, new Logout() );</span>
-<span class="nc" id="L23">    }</span>
+<span class="nc" id="L14">        commands = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L15">        commands.put( &quot;login&quot;, new Login() );</span>
+<span class="nc" id="L16">        commands.put( &quot;register&quot;, new Register() );</span>
+<span class="nc" id="L17">        commands.put( &quot;main&quot;, new MainPage() );</span>
+<span class="nc" id="L18">        commands.put( &quot;order&quot;, new Orders() );</span>
+<span class="nc" id="L19">        commands.put( &quot;finalizeorder&quot;, new FinalizeOrder() );</span>
+<span class="nc" id="L20">        commands.put( &quot;orderstatus&quot;, new OrderStatus() );</span>
+<span class="nc" id="L21">        commands.put( &quot;history&quot;, new OrderHistory() );</span>
+<span class="nc" id="L22">        commands.put( &quot;stykliste&quot;, new ShowStykliste() );</span>
+<span class="nc" id="L23">        commands.put( &quot;logout&quot;, new Logout() );</span>
+<span class="nc" id="L24">    }</span>
 
     static Command from( HttpServletRequest request ) {
-<span class="nc" id="L26">        String commandName = request.getParameter( &quot;command&quot; );</span>
-<span class="nc bnc" id="L27" title="All 2 branches missed.">        if ( commands == null ) {</span>
-<span class="nc" id="L28">            initCommands();</span>
+<span class="nc" id="L27">        String commandName = request.getParameter( &quot;command&quot; );</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        if ( commands == null ) {</span>
+<span class="nc" id="L29">            initCommands();</span>
         }
-<span class="nc" id="L30">        return commands.getOrDefault(commandName, new UnknownCommand() );</span>
+<span class="nc" id="L31">        return commands.getOrDefault(commandName, new UnknownCommand() );</span>
     }
 
     abstract String execute( HttpServletRequest request, HttpServletResponse response ) 
-            throws LoginSampleException;
+            throws LoginSampleException, OrderSampleException;
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -5,13 +5,10 @@
  */
 package PresentationLayer;
 
-import DBAccess.OrderMapper;
-import FunctionLayer.Order;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.OrderSampleException;
 import FunctionLayer.User;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class FinalizeOrder extends Command {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderSampleException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         User user = LogicFacade.login(email, password);

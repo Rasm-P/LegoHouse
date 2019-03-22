@@ -7,67 +7,66 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
 /**
  *
  * @author Rasmus2
  */
-<span class="nc" id="L16">public class UserMapper {</span>
+<span class="nc" id="L15">public class UserMapper {</span>
 
     public static void createUser(User user) throws LoginSampleException {
         try {
-<span class="nc" id="L20">            Connection con = Connector.connection();</span>
-<span class="nc" id="L21">            String SQL = &quot;INSERT INTO User (email, password, role) VALUES (?, ?, ?)&quot;;</span>
-<span class="nc" id="L22">            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);</span>
-<span class="nc" id="L23">            ps.setString(1, user.getEmail());</span>
-<span class="nc" id="L24">            ps.setString(2, user.getPassword());</span>
-<span class="nc" id="L25">            ps.setString(3, user.getRole());</span>
-<span class="nc" id="L26">            ps.executeUpdate();</span>
-<span class="nc" id="L27">            ResultSet ids = ps.getGeneratedKeys();</span>
-<span class="nc" id="L28">            ids.next();</span>
-<span class="nc" id="L29">            int id = ids.getInt(1);</span>
-<span class="nc" id="L30">            user.setId(id);</span>
-<span class="nc" id="L31">        } catch (SQLException | ClassNotFoundException ex) {</span>
-<span class="nc" id="L32">            throw new LoginSampleException(ex.getMessage());</span>
-<span class="nc" id="L33">        }</span>
-<span class="nc" id="L34">    }</span>
+<span class="nc" id="L19">            Connection con = Connector.connection();</span>
+<span class="nc" id="L20">            String SQL = &quot;INSERT INTO User (email, password, role) VALUES (?, ?, ?)&quot;;</span>
+<span class="nc" id="L21">            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);</span>
+<span class="nc" id="L22">            ps.setString(1, user.getEmail());</span>
+<span class="nc" id="L23">            ps.setString(2, user.getPassword());</span>
+<span class="nc" id="L24">            ps.setString(3, user.getRole());</span>
+<span class="nc" id="L25">            ps.executeUpdate();</span>
+<span class="nc" id="L26">            ResultSet ids = ps.getGeneratedKeys();</span>
+<span class="nc" id="L27">            ids.next();</span>
+<span class="nc" id="L28">            int id = ids.getInt(1);</span>
+<span class="nc" id="L29">            user.setId(id);</span>
+<span class="nc" id="L30">        } catch (SQLException | ClassNotFoundException ex) {</span>
+<span class="nc" id="L31">            throw new LoginSampleException(ex.getMessage());</span>
+<span class="nc" id="L32">        }</span>
+<span class="nc" id="L33">    }</span>
 
     public static User login(String email, String password) throws LoginSampleException {
         try {
-<span class="fc" id="L38">            Connection con = Connector.connection();</span>
-<span class="fc" id="L39">            String SQL = &quot;SELECT id, role FROM User &quot;</span>
+<span class="fc" id="L37">            Connection con = Connector.connection();</span>
+<span class="fc" id="L38">            String SQL = &quot;SELECT id, role FROM User &quot;</span>
                     + &quot;WHERE email=? AND password=?&quot;;
-<span class="fc" id="L41">            PreparedStatement ps = con.prepareStatement(SQL);</span>
-<span class="fc" id="L42">            ps.setString(1, email);</span>
-<span class="fc" id="L43">            ps.setString(2, password);</span>
-<span class="fc" id="L44">            ResultSet rs = ps.executeQuery();</span>
-<span class="fc bfc" id="L45" title="All 2 branches covered.">            if (rs.next()) {</span>
-<span class="fc" id="L46">                String role = rs.getString(&quot;role&quot;);</span>
-<span class="fc" id="L47">                int id = rs.getInt(&quot;id&quot;);</span>
-<span class="fc" id="L48">                User user = new User(email, password, role);</span>
-<span class="fc" id="L49">                user.setId(id);</span>
-<span class="fc" id="L50">                return user;</span>
+<span class="fc" id="L40">            PreparedStatement ps = con.prepareStatement(SQL);</span>
+<span class="fc" id="L41">            ps.setString(1, email);</span>
+<span class="fc" id="L42">            ps.setString(2, password);</span>
+<span class="fc" id="L43">            ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">            if (rs.next()) {</span>
+<span class="fc" id="L45">                String role = rs.getString(&quot;role&quot;);</span>
+<span class="fc" id="L46">                int id = rs.getInt(&quot;id&quot;);</span>
+<span class="fc" id="L47">                User user = new User(email, password, role);</span>
+<span class="fc" id="L48">                user.setId(id);</span>
+<span class="fc" id="L49">                return user;</span>
             } else {
-<span class="fc" id="L52">                throw new LoginSampleException(&quot;Could not validate user&quot;);</span>
+<span class="fc" id="L51">                throw new LoginSampleException(&quot;Could not validate user&quot;);</span>
             }
-<span class="nc" id="L54">        } catch (ClassNotFoundException | SQLException ex) {</span>
-<span class="nc" id="L55">            throw new LoginSampleException(ex.getMessage());</span>
+<span class="nc" id="L53">        } catch (ClassNotFoundException | SQLException ex) {</span>
+<span class="nc" id="L54">            throw new LoginSampleException(ex.getMessage());</span>
         }
     }
 
     public static void removeUser(User user) throws LoginSampleException {
         try {
-<span class="nc" id="L61">            Connection con = Connector.connection();</span>
-<span class="nc" id="L62">            String SQL = &quot;DELETE FROM `useradmin`.`user`WHERE email=? AND password=?&quot;;</span>
-<span class="nc" id="L63">            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);</span>
-<span class="nc" id="L64">            ps.setString(1, user.getEmail());</span>
-<span class="nc" id="L65">            ps.setString(2, user.getPassword());</span>
-<span class="nc" id="L66">            ps.executeUpdate();</span>
-<span class="nc" id="L67">        } catch (SQLException | ClassNotFoundException ex) {</span>
-<span class="nc" id="L68">            throw new LoginSampleException(ex.getMessage());</span>
-<span class="nc" id="L69">        }</span>
-<span class="nc" id="L70">    }</span>
+<span class="nc" id="L60">            Connection con = Connector.connection();</span>
+<span class="nc" id="L61">            String SQL = &quot;DELETE FROM `useradmin`.`user`WHERE email=? AND password=?&quot;;</span>
+<span class="nc" id="L62">            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);</span>
+<span class="nc" id="L63">            ps.setString(1, user.getEmail());</span>
+<span class="nc" id="L64">            ps.setString(2, user.getPassword());</span>
+<span class="nc" id="L65">            ps.executeUpdate();</span>
+<span class="nc" id="L66">        } catch (SQLException | ClassNotFoundException ex) {</span>
+<span class="nc" id="L67">            throw new LoginSampleException(ex.getMessage());</span>
+<span class="nc" id="L68">        }</span>
+<span class="nc" id="L69">    }</span>
     
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

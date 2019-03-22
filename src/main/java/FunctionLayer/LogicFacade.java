@@ -21,7 +21,7 @@ public class LogicFacade {
         return user;
     }
 
-    public static Styklist stykliste(float length, float width, float height) throws LoginSampleException {
+    public static Styklist stykliste(float length, float width, float height) throws OrderSampleException {
         float TotalWithHeigth2x4;
         float TotalWithHeigth2x2;
         float TotalWithHeigth1x2;
@@ -58,26 +58,26 @@ public class LogicFacade {
         return orderLine;
     }
 
-    public static void createOrder(User user, float length, float width, float height) throws LoginSampleException {
+    public static void createOrder(User user, float length, float width, float height) throws OrderSampleException {
         Order order = new Order(user.getId(), LocalDate.now(), length, width, height);
         OrderMapper.createOrder(order, user);
     }
 
-    public static List<Order> getAllOrdersList() throws LoginSampleException {
+    public static List<Order> getAllOrdersList() throws OrderSampleException {
         List<Order> list = OrderMapper.getAllOrders();
         return list;
     }
 
-    public static Order findOrder(int order_id) throws LoginSampleException {
+    public static Order findOrder(int order_id) throws OrderSampleException {
         Order order = OrderMapper.findSpecificOrder(order_id);
         return order;
     }
 
-    public static void changeOrderStatus(int status, Order order) throws LoginSampleException {
+    public static void changeOrderStatus(int status, Order order) throws OrderSampleException {
         OrderMapper.changeOrderStatus(status, order);
     }
 
-    public static List<Order> getOrderHistory(User user) throws LoginSampleException {
+    public static List<Order> getOrderHistory(User user) throws OrderSampleException {
         List<Order> list = OrderMapper.getOrderHistory(user);
         return list;
     }

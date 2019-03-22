@@ -5,13 +5,10 @@
  */
 package PresentationLayer;
 
-import DBAccess.OrderMapper;
-import FunctionLayer.Order;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.OrderSampleException;
 import FunctionLayer.User;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -21,29 +18,29 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rasmus2
  */
-<span class="nc" id="L24">public class FinalizeOrder extends Command {</span>
+<span class="nc" id="L21">public class FinalizeOrder extends Command {</span>
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-<span class="nc" id="L28">        String email = request.getParameter(&quot;email&quot;);</span>
-<span class="nc" id="L29">        String password = request.getParameter(&quot;password&quot;);</span>
-<span class="nc" id="L30">        User user = LogicFacade.login(email, password);</span>
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderSampleException {
+<span class="nc" id="L25">        String email = request.getParameter(&quot;email&quot;);</span>
+<span class="nc" id="L26">        String password = request.getParameter(&quot;password&quot;);</span>
+<span class="nc" id="L27">        User user = LogicFacade.login(email, password);</span>
 
-<span class="nc" id="L32">        float width = Float.parseFloat(request.getParameter(&quot;width&quot;));</span>
-<span class="nc" id="L33">        float length = Float.parseFloat(request.getParameter(&quot;length&quot;));</span>
-<span class="nc" id="L34">        float height = Float.parseFloat(request.getParameter(&quot;height&quot;));</span>
+<span class="nc" id="L29">        float width = Float.parseFloat(request.getParameter(&quot;width&quot;));</span>
+<span class="nc" id="L30">        float length = Float.parseFloat(request.getParameter(&quot;length&quot;));</span>
+<span class="nc" id="L31">        float height = Float.parseFloat(request.getParameter(&quot;height&quot;));</span>
 
-<span class="nc bnc" id="L36" title="All 6 branches missed.">        if (width &lt; 4 || length &lt; 4 || height &lt; 4) {</span>
+<span class="nc bnc" id="L33" title="All 6 branches missed.">        if (width &lt; 4 || length &lt; 4 || height &lt; 4) {</span>
             try {
-<span class="nc" id="L38">                throw new OrderSampleException(&quot;The size of your house was too small&quot;);</span>
-<span class="nc" id="L39">            } catch (OrderSampleException ex) {</span>
-<span class="nc" id="L40">                Logger.getLogger(FinalizeOrder.class.getName()).log(Level.SEVERE, null, ex);</span>
-<span class="nc" id="L41">            }</span>
+<span class="nc" id="L35">                throw new OrderSampleException(&quot;The size of your house was too small&quot;);</span>
+<span class="nc" id="L36">            } catch (OrderSampleException ex) {</span>
+<span class="nc" id="L37">                Logger.getLogger(FinalizeOrder.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L38">            }</span>
         } else {
-<span class="nc" id="L43">            LogicFacade.createOrder(user, length, width, height);</span>
+<span class="nc" id="L40">            LogicFacade.createOrder(user, length, width, height);</span>
         }
 
-<span class="nc" id="L46">        return user.getRole() + &quot;page&quot;;</span>
+<span class="nc" id="L43">        return user.getRole() + &quot;page&quot;;</span>
     }
 
 }

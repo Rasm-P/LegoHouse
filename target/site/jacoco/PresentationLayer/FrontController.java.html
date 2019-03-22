@@ -6,7 +6,10 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.OrderSampleException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,67 +20,70 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rasmus2
  */
-@WebServlet( name = &quot;FrontController&quot;, urlPatterns = { &quot;/FrontController&quot; } )
-<span class="nc" id="L21">public class FrontController extends HttpServlet {</span>
+@WebServlet(name = &quot;FrontController&quot;, urlPatterns = {&quot;/FrontController&quot;})
+<span class="nc" id="L24">public class FrontController extends HttpServlet {</span>
 
     /**
-     Processes requests for both HTTP &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;POST&lt;/code&gt;
-     methods.
-
-     @param request servlet request
-     @param response servlet response
-     @throws ServletException if a servlet-specific error occurs
-     @throws IOException if an I/O error occurs
+     * Processes requests for both HTTP &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;POST&lt;/code&gt;
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
      */
-    protected void processRequest( HttpServletRequest request, HttpServletResponse response )
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-<span class="nc" id="L35">            Command action = Command.from( request );</span>
-<span class="nc" id="L36">            String view = action.execute( request, response );</span>
-<span class="nc" id="L37">            request.getRequestDispatcher( &quot;/WEB-INF/&quot; + view + &quot;.jsp&quot; ).forward( request, response );</span>
-<span class="nc" id="L38">        } catch ( LoginSampleException ex ) {</span>
-<span class="nc" id="L39">            request.setAttribute( &quot;error&quot;, ex.getMessage() );</span>
-<span class="nc" id="L40">            request.getRequestDispatcher( &quot;index.jsp&quot; ).forward( request, response );</span>
-<span class="nc" id="L41">        }</span>
-<span class="nc" id="L42">    }</span>
+<span class="nc" id="L38">            Command action = Command.from(request);</span>
+<span class="nc" id="L39">            String view = action.execute(request, response);</span>
+<span class="nc" id="L40">            request.getRequestDispatcher(&quot;/WEB-INF/&quot; + view + &quot;.jsp&quot;).forward(request, response);</span>
+<span class="nc" id="L41">        } catch (LoginSampleException ex) {</span>
+<span class="nc" id="L42">            request.setAttribute(&quot;error&quot;, ex.getMessage());</span>
+<span class="nc" id="L43">            request.getRequestDispatcher(&quot;index.jsp&quot;).forward(request, response);</span>
+<span class="nc" id="L44">        } catch (OrderSampleException ex) {</span>
+<span class="nc" id="L45">            request.setAttribute(&quot;error&quot;, ex.getMessage());</span>
+<span class="nc" id="L46">            request.getRequestDispatcher(&quot;index.jsp&quot;).forward(request, response);</span>
+<span class="nc" id="L47">        }</span>
+<span class="nc" id="L48">    }</span>
 
     // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;HttpServlet methods. Click on the + sign on the left to edit the code.&quot;&gt;
     /**
-     Handles the HTTP &lt;code&gt;GET&lt;/code&gt; method.
-
-     @param request servlet request
-     @param response servlet response
-     @throws ServletException if a servlet-specific error occurs
-     @throws IOException if an I/O error occurs
+     * Handles the HTTP &lt;code&gt;GET&lt;/code&gt; method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet( HttpServletRequest request, HttpServletResponse response )
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-<span class="nc" id="L56">        processRequest( request, response );</span>
-<span class="nc" id="L57">    }</span>
+<span class="nc" id="L62">        processRequest(request, response);</span>
+<span class="nc" id="L63">    }</span>
 
     /**
-     Handles the HTTP &lt;code&gt;POST&lt;/code&gt; method.
-
-     @param request servlet request
-     @param response servlet response
-     @throws ServletException if a servlet-specific error occurs
-     @throws IOException if an I/O error occurs
+     * Handles the HTTP &lt;code&gt;POST&lt;/code&gt; method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost( HttpServletRequest request, HttpServletResponse response )
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-<span class="nc" id="L70">        processRequest( request, response );</span>
-<span class="nc" id="L71">    }</span>
+<span class="nc" id="L76">        processRequest(request, response);</span>
+<span class="nc" id="L77">    }</span>
 
     /**
-     Returns a short description of the servlet.
-
-     @return a String containing servlet description
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
      */
     @Override
     public String getServletInfo() {
-<span class="nc" id="L80">        return &quot;Short description&quot;;</span>
+<span class="nc" id="L86">        return &quot;Short description&quot;;</span>
     }// &lt;/editor-fold&gt;
 
 }

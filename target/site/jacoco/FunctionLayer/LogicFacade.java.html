@@ -21,7 +21,7 @@ import java.util.List;
 <span class="nc" id="L21">        return user;</span>
     }
 
-    public static Styklist stykliste(float length, float width, float height) throws LoginSampleException {
+    public static Styklist stykliste(float length, float width, float height) throws OrderSampleException {
         float TotalWithHeigth2x4;
         float TotalWithHeigth2x2;
         float TotalWithHeigth1x2;
@@ -58,26 +58,26 @@ import java.util.List;
 <span class="nc" id="L58">        return orderLine;</span>
     }
 
-    public static void createOrder(User user, float length, float width, float height) throws LoginSampleException {
+    public static void createOrder(User user, float length, float width, float height) throws OrderSampleException {
 <span class="nc" id="L62">        Order order = new Order(user.getId(), LocalDate.now(), length, width, height);</span>
 <span class="nc" id="L63">        OrderMapper.createOrder(order, user);</span>
 <span class="nc" id="L64">    }</span>
 
-    public static List&lt;Order&gt; getAllOrdersList() throws LoginSampleException {
+    public static List&lt;Order&gt; getAllOrdersList() throws OrderSampleException {
 <span class="nc" id="L67">        List&lt;Order&gt; list = OrderMapper.getAllOrders();</span>
 <span class="nc" id="L68">        return list;</span>
     }
 
-    public static Order findOrder(int order_id) throws LoginSampleException {
+    public static Order findOrder(int order_id) throws OrderSampleException {
 <span class="nc" id="L72">        Order order = OrderMapper.findSpecificOrder(order_id);</span>
 <span class="nc" id="L73">        return order;</span>
     }
 
-    public static void changeOrderStatus(int status, Order order) throws LoginSampleException {
+    public static void changeOrderStatus(int status, Order order) throws OrderSampleException {
 <span class="nc" id="L77">        OrderMapper.changeOrderStatus(status, order);</span>
 <span class="nc" id="L78">    }</span>
 
-    public static List&lt;Order&gt; getOrderHistory(User user) throws LoginSampleException {
+    public static List&lt;Order&gt; getOrderHistory(User user) throws OrderSampleException {
 <span class="nc" id="L81">        List&lt;Order&gt; list = OrderMapper.getOrderHistory(user);</span>
 <span class="nc" id="L82">        return list;</span>
     }

@@ -5,10 +5,10 @@
  */
 package PresentationLayer;
 
-import DBAccess.OrderMapper;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
+import FunctionLayer.OrderSampleException;
 import FunctionLayer.User;
 import FunctionLayer.Styklist;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 public class ShowStykliste extends Command {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderSampleException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         User user = LogicFacade.login(email, password);

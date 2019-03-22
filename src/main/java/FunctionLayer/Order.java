@@ -12,7 +12,6 @@ import java.time.LocalDate;
  * @author Rasmus2
  */
 public class Order {
-
     private int order_id;
     private int user_id;
     private LocalDate order_date;
