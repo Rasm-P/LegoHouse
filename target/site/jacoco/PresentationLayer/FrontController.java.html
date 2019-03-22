@@ -38,14 +38,11 @@ import javax.servlet.http.HttpServletResponse;
 <span class="nc" id="L38">            Command action = Command.from(request);</span>
 <span class="nc" id="L39">            String view = action.execute(request, response);</span>
 <span class="nc" id="L40">            request.getRequestDispatcher(&quot;/WEB-INF/&quot; + view + &quot;.jsp&quot;).forward(request, response);</span>
-<span class="nc" id="L41">        } catch (LoginSampleException ex) {</span>
+<span class="nc" id="L41">        } catch (LoginSampleException | OrderSampleException ex) {</span>
 <span class="nc" id="L42">            request.setAttribute(&quot;error&quot;, ex.getMessage());</span>
 <span class="nc" id="L43">            request.getRequestDispatcher(&quot;index.jsp&quot;).forward(request, response);</span>
-<span class="nc" id="L44">        } catch (OrderSampleException ex) {</span>
-<span class="nc" id="L45">            request.setAttribute(&quot;error&quot;, ex.getMessage());</span>
-<span class="nc" id="L46">            request.getRequestDispatcher(&quot;index.jsp&quot;).forward(request, response);</span>
-<span class="nc" id="L47">        }</span>
-<span class="nc" id="L48">    }</span>
+<span class="nc" id="L44">        }</span>
+<span class="nc" id="L45">    }</span>
 
     // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;HttpServlet methods. Click on the + sign on the left to edit the code.&quot;&gt;
     /**
@@ -59,8 +56,8 @@ import javax.servlet.http.HttpServletResponse;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-<span class="nc" id="L62">        processRequest(request, response);</span>
-<span class="nc" id="L63">    }</span>
+<span class="nc" id="L59">        processRequest(request, response);</span>
+<span class="nc" id="L60">    }</span>
 
     /**
      * Handles the HTTP &lt;code&gt;POST&lt;/code&gt; method.
@@ -73,8 +70,8 @@ import javax.servlet.http.HttpServletResponse;
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-<span class="nc" id="L76">        processRequest(request, response);</span>
-<span class="nc" id="L77">    }</span>
+<span class="nc" id="L73">        processRequest(request, response);</span>
+<span class="nc" id="L74">    }</span>
 
     /**
      * Returns a short description of the servlet.
@@ -83,7 +80,7 @@ import javax.servlet.http.HttpServletResponse;
      */
     @Override
     public String getServletInfo() {
-<span class="nc" id="L86">        return &quot;Short description&quot;;</span>
+<span class="nc" id="L83">        return &quot;Short description&quot;;</span>
     }// &lt;/editor-fold&gt;
 
 }

@@ -9,7 +9,7 @@ LegoHouseProject,FunctionLayer,Order,93,0,2,0,23,0,13,0,12,0
 LegoHouseProject,FunctionLayer,OrderSampleException,4,0,0,0,2,0,1,0,1,0
 LegoHouseProject,FunctionLayer,User,15,25,0,0,7,10,4,5,4,5
 LegoHouseProject,PresentationLayer,FinalizeOrder,71,0,6,0,14,0,5,0,2,0
-LegoHouseProject,PresentationLayer,FrontController,65,0,0,0,17,0,5,0,5,0
+LegoHouseProject,PresentationLayer,FrontController,52,0,0,0,14,0,5,0,5,0
 LegoHouseProject,PresentationLayer,OrderHistory,27,0,0,0,8,0,2,0,2,0
 LegoHouseProject,PresentationLayer,Logout,42,0,0,0,12,0,2,0,2,0
 LegoHouseProject,PresentationLayer,MainPage,65,0,6,0,14,0,5,0,2,0
