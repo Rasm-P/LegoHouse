@@ -74,7 +74,7 @@ public class Order {
 
     @Override
     public String toString() {
-<span class="nc" id="L77">        return &quot;Order_id=&quot; + order_id + &quot;, Order_date=&quot; + order_date + &quot;, Order_length=&quot; + order_length + &quot;, Order_width=&quot; + order_width + &quot;, Order_height=&quot; + order_height + &quot;, Order_status=&quot; + getSent();</span>
+<span class="nc" id="L77">        return &quot;Order_id=&quot; + order_id + &quot;, Order_date=&quot; + order_date + &quot;, Order_length=&quot; +  (int)order_length + &quot;, Order_width=&quot; + (int)order_width + &quot;, Order_height=&quot; + (int)order_height + &quot;, Order_status=&quot; + getSent();</span>
     }
 
 }

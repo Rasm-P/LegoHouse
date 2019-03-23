@@ -30,6 +30,8 @@ public class LogicFacade {
         float Window = 4;
         float Door = 6;
         float Reference2x4 = 8;
+        float Reference2x2 = 4;
+        float Reference1x2 = 2;
 
         float total = ((length * width) * height) / Reference2x4;
         total = total / 2;
@@ -38,21 +40,21 @@ public class LogicFacade {
         if ((total % 1) != 0) {
             float Decimal = total - (int) total;
             total = (float) Math.floor(total);
-            TotalWithHeigth2x4 = total;
-            TotalWithHeigth2x2 = total * 2;
+            TotalWithHeigth2x4 = total / Reference2x4;
+            TotalWithHeigth2x2 = (total * 2) / Reference2x2;
             if ((Decimal * Reference2x4 * 2 / 2) % 2 == 0) {
-                TotalWithHeigth1x2 = Decimal * Reference2x4 * 2;
+                TotalWithHeigth1x2 = (Decimal * Reference2x4 * 2) / Reference1x2;
             } else {
-                TotalWithHeigth1x2 = (float) Math.ceil(Decimal) * Reference2x4 * 2 / 2;
+                TotalWithHeigth1x2 = ((float) Math.ceil(Decimal) * Reference2x4 * 2 / 2) / Reference1x2;
             }
-            TotalWindows2x2 = Window * height;
-            TotalDoors3x2 = Door * height;
+            TotalWindows2x2 = height / Window;
+            TotalDoors3x2 =  height / Door;
         } else {
-            TotalWithHeigth2x4 = total;
-            TotalWithHeigth2x2 = total * 2;
+            TotalWithHeigth2x4 = total / Reference2x4;
+            TotalWithHeigth2x2 = (total * 2) / Reference2x2;
             TotalWithHeigth1x2 = 0;
-            TotalWindows2x2 = Window * height;
-            TotalDoors3x2 = Door * height;
+            TotalWindows2x2 = height / Window;
+            TotalDoors3x2 = height / Door;
         }
         Styklist orderLine = new Styklist(TotalWithHeigth2x4, TotalWithHeigth2x2, TotalWithHeigth1x2, TotalWindows2x2, TotalDoors3x2);
         return orderLine;

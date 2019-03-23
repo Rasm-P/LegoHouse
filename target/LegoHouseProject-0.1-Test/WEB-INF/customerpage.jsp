@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Hello <%=request.getParameter("email")%> </h1>
-        <h2>You are now logged in as a customer of our wonderful site.</h2>
+        <h2>You are now logged in as a customer of our wonderful site</h2>
         <form action="FrontController" method="post">
             <input type="hidden" name="email" value="<%=request.getParameter("email")%>">
             <input type="hidden" name="password" value="<%=request.getParameter("password")%>">

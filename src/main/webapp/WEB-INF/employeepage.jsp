@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Hello <%=request.getParameter("email")%> </h1>
-        <h2>You are now logged in as a EMPLOYEE of our wonderful site.</h2>
+        <h2>You are now logged in as a EMPLOYEE of our wonderful site</h2>
         <h3>The history of all user orders</h3>
         <ol>
             <%

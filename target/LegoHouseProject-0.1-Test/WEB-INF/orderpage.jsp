@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Make an order</h1>
-        <h2>Write your references inf number of bricks for you verry own lego house by filling out the scene.</h2>
+        <h2>Write your references in number of Lego brick dots for you verry own lego house by filling out the scheme</h2>
         <form name="OrderPage" action="FrontController" method="POST">
             <input type="hidden" name="email" value="<%=request.getParameter("email")%>">
             <input type="hidden" name="password" value="<%=request.getParameter("password")%>">

@@ -28,7 +28,7 @@
                         out.println("<input type=\"hidden\" name=\"password\" value=\"" + request.getParameter("password") + "\">");
                         out.println("<input type=\"hidden\" name=\"specificorder\" value=\"" + orders.get(i).getOrder_id() + "\">");
                         out.println("<input type=\"hidden\" name=\"command\" value=\"stykliste\">");
-                        out.println("<input type=\"submit\" value=\"Stykliste\" />");
+                        out.println("<input type=\"submit\" value=\"Order Stykliste\" />");
                         out.println("</form>");
 
                         out.println("<br>");

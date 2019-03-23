@@ -74,7 +74,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order_id=" + order_id + ", Order_date=" + order_date + ", Order_length=" + order_length + ", Order_width=" + order_width + ", Order_height=" + order_height + ", Order_status=" + getSent();
+        return "Order_id=" + order_id + ", Order_date=" + order_date + ", Order_length=" +  (int)order_length + ", Order_width=" + (int)order_width + ", Order_height=" + (int)order_height + ", Order_status=" + getSent();
     }
 
 }

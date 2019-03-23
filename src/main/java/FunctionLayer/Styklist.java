@@ -24,24 +24,24 @@ public class Styklist {
         this.TotalDoors3x2 = TotalDoors3x2;
     }
 
-    public float getTotalWithHeigth2x4() {
-        return TotalWithHeigth2x4;
+    public int getTotalWithHeigth2x4() {
+        return (int)TotalWithHeigth2x4;
     }
 
-    public float getTotalWithHeigth2x2() {
-        return TotalWithHeigth2x2;
+    public int getTotalWithHeigth2x2() {
+        return (int)TotalWithHeigth2x2;
     }
 
-    public float getTotalWithHeigth1x2() {
-        return TotalWithHeigth1x2;
+    public int getTotalWithHeigth1x2() {
+        return (int)TotalWithHeigth1x2;
     }
 
-    public float getTotalWindows2x2() {
-        return TotalWindows2x2;
+    public int getTotalWindows2x2() {
+        return (int)TotalWindows2x2;
     }
 
-    public float getTotalDoors3x2() {
-        return TotalDoors3x2;
+    public int getTotalDoors3x2() {
+        return (int)TotalDoors3x2;
     }
     
     

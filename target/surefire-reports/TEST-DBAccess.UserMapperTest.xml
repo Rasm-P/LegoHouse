@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="DBAccess.UserMapperTest" time="3.425" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="DBAccess.UserMapperTest" time="3.914" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_181\jre\bin"/>
@@ -62,9 +62,9 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="DBAccess.UserMapperTest" name="testCreateUser01" time="2.293"/>
-  <testcase classname="DBAccess.UserMapperTest" name="testLogin01" time="0.226"/>
-  <testcase classname="DBAccess.UserMapperTest" name="testLogin02" time="0.237"/>
-  <testcase classname="DBAccess.UserMapperTest" name="testLogin03" time="0.244"/>
-  <testcase classname="DBAccess.UserMapperTest" name="testSetUpOK" time="0.238"/>
+  <testcase classname="DBAccess.UserMapperTest" name="testCreateUser01" time="2.737"/>
+  <testcase classname="DBAccess.UserMapperTest" name="testLogin01" time="0.262"/>
+  <testcase classname="DBAccess.UserMapperTest" name="testLogin02" time="0.23"/>
+  <testcase classname="DBAccess.UserMapperTest" name="testLogin03" time="0.202"/>
+  <testcase classname="DBAccess.UserMapperTest" name="testSetUpOK" time="0.223"/>
 </testsuite>

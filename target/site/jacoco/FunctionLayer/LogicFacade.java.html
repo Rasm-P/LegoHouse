@@ -30,56 +30,58 @@ import java.util.List;
 <span class="nc" id="L30">        float Window = 4;</span>
 <span class="nc" id="L31">        float Door = 6;</span>
 <span class="nc" id="L32">        float Reference2x4 = 8;</span>
+<span class="nc" id="L33">        float Reference2x2 = 4;</span>
+<span class="nc" id="L34">        float Reference1x2 = 2;</span>
 
-<span class="nc" id="L34">        float total = ((length * width) * height) / Reference2x4;</span>
-<span class="nc" id="L35">        total = total / 2;</span>
-<span class="nc" id="L36">        total = total - (Window + Door);</span>
+<span class="nc" id="L36">        float total = ((length * width) * height) / Reference2x4;</span>
+<span class="nc" id="L37">        total = total / 2;</span>
+<span class="nc" id="L38">        total = total - (Window + Door);</span>
 
-<span class="nc bnc" id="L38" title="All 2 branches missed.">        if ((total % 1) != 0) {</span>
-<span class="nc" id="L39">            float Decimal = total - (int) total;</span>
-<span class="nc" id="L40">            total = (float) Math.floor(total);</span>
-<span class="nc" id="L41">            TotalWithHeigth2x4 = total;</span>
-<span class="nc" id="L42">            TotalWithHeigth2x2 = total * 2;</span>
-<span class="nc bnc" id="L43" title="All 2 branches missed.">            if ((Decimal * Reference2x4 * 2 / 2) % 2 == 0) {</span>
-<span class="nc" id="L44">                TotalWithHeigth1x2 = Decimal * Reference2x4 * 2;</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if ((total % 1) != 0) {</span>
+<span class="nc" id="L41">            float Decimal = total - (int) total;</span>
+<span class="nc" id="L42">            total = (float) Math.floor(total);</span>
+<span class="nc" id="L43">            TotalWithHeigth2x4 = total / Reference2x4;</span>
+<span class="nc" id="L44">            TotalWithHeigth2x2 = (total * 2) / Reference2x2;</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            if ((Decimal * Reference2x4 * 2 / 2) % 2 == 0) {</span>
+<span class="nc" id="L46">                TotalWithHeigth1x2 = (Decimal * Reference2x4 * 2) / Reference1x2;</span>
             } else {
-<span class="nc" id="L46">                TotalWithHeigth1x2 = (float) Math.ceil(Decimal) * Reference2x4 * 2 / 2;</span>
+<span class="nc" id="L48">                TotalWithHeigth1x2 = ((float) Math.ceil(Decimal) * Reference2x4 * 2 / 2) / Reference1x2;</span>
             }
-<span class="nc" id="L48">            TotalWindows2x2 = Window * height;</span>
-<span class="nc" id="L49">            TotalDoors3x2 = Door * height;</span>
-<span class="nc" id="L50">        } else {</span>
-<span class="nc" id="L51">            TotalWithHeigth2x4 = total;</span>
-<span class="nc" id="L52">            TotalWithHeigth2x2 = total * 2;</span>
-<span class="nc" id="L53">            TotalWithHeigth1x2 = 0;</span>
-<span class="nc" id="L54">            TotalWindows2x2 = Window * height;</span>
-<span class="nc" id="L55">            TotalDoors3x2 = Door * height;</span>
+<span class="nc" id="L50">            TotalWindows2x2 = height / Window;</span>
+<span class="nc" id="L51">            TotalDoors3x2 =  height / Door;</span>
+<span class="nc" id="L52">        } else {</span>
+<span class="nc" id="L53">            TotalWithHeigth2x4 = total / Reference2x4;</span>
+<span class="nc" id="L54">            TotalWithHeigth2x2 = (total * 2) / Reference2x2;</span>
+<span class="nc" id="L55">            TotalWithHeigth1x2 = 0;</span>
+<span class="nc" id="L56">            TotalWindows2x2 = height / Window;</span>
+<span class="nc" id="L57">            TotalDoors3x2 = height / Door;</span>
         }
-<span class="nc" id="L57">        Styklist orderLine = new Styklist(TotalWithHeigth2x4, TotalWithHeigth2x2, TotalWithHeigth1x2, TotalWindows2x2, TotalDoors3x2);</span>
-<span class="nc" id="L58">        return orderLine;</span>
+<span class="nc" id="L59">        Styklist orderLine = new Styklist(TotalWithHeigth2x4, TotalWithHeigth2x2, TotalWithHeigth1x2, TotalWindows2x2, TotalDoors3x2);</span>
+<span class="nc" id="L60">        return orderLine;</span>
     }
 
     public static void createOrder(User user, float length, float width, float height) throws OrderSampleException {
-<span class="nc" id="L62">        Order order = new Order(user.getId(), LocalDate.now(), length, width, height);</span>
-<span class="nc" id="L63">        OrderMapper.createOrder(order, user);</span>
-<span class="nc" id="L64">    }</span>
+<span class="nc" id="L64">        Order order = new Order(user.getId(), LocalDate.now(), length, width, height);</span>
+<span class="nc" id="L65">        OrderMapper.createOrder(order, user);</span>
+<span class="nc" id="L66">    }</span>
 
     public static List&lt;Order&gt; getAllOrdersList() throws OrderSampleException {
-<span class="nc" id="L67">        List&lt;Order&gt; list = OrderMapper.getAllOrders();</span>
-<span class="nc" id="L68">        return list;</span>
+<span class="nc" id="L69">        List&lt;Order&gt; list = OrderMapper.getAllOrders();</span>
+<span class="nc" id="L70">        return list;</span>
     }
 
     public static Order findOrder(int order_id) throws OrderSampleException {
-<span class="nc" id="L72">        Order order = OrderMapper.findSpecificOrder(order_id);</span>
-<span class="nc" id="L73">        return order;</span>
+<span class="nc" id="L74">        Order order = OrderMapper.findSpecificOrder(order_id);</span>
+<span class="nc" id="L75">        return order;</span>
     }
 
     public static void changeOrderStatus(int status, Order order) throws OrderSampleException {
-<span class="nc" id="L77">        OrderMapper.changeOrderStatus(status, order);</span>
-<span class="nc" id="L78">    }</span>
+<span class="nc" id="L79">        OrderMapper.changeOrderStatus(status, order);</span>
+<span class="nc" id="L80">    }</span>
 
     public static List&lt;Order&gt; getOrderHistory(User user) throws OrderSampleException {
-<span class="nc" id="L81">        List&lt;Order&gt; list = OrderMapper.getOrderHistory(user);</span>
-<span class="nc" id="L82">        return list;</span>
+<span class="nc" id="L83">        List&lt;Order&gt; list = OrderMapper.getOrderHistory(user);</span>
+<span class="nc" id="L84">        return list;</span>
     }
 
 }
