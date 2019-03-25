@@ -19,10 +19,10 @@
                     <form name="login" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="login">
                         Email:<br>
-                        <input type="text" name="email" value="">
+                        <input type="text" name="email" value="jens@somewhere.com">
                         <br>
                         Password:<br>
-                        <input type="password" name="password" value="">
+                        <input type="password" name="password" value="jensen">
                         <br>
                         <input type="submit" value="Submit">
                     </form>

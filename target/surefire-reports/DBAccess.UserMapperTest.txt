@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: DBAccess.UserMapperTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.333 sec
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.38 sec
