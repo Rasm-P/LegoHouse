@@ -10,13 +10,13 @@ import java.sql.SQLException;
  */
 public class Connector {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/useradmin";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "1234";
+    private static final String URL = "jdbc:mysql://178.62.228.96:3306/useradmin";
+    private static final String USERNAME = "LegoReader";
+    private static final String PASSWORD = "LegoHouse1998";
     
-    //private static final String URL = "jdbc:mysql://46.101.253.149:3306/useradmin";
-    //private static final String USERNAME = "doorkeeper";
-    //private static final String PASSWORD = "bank3*andyouarein";
+    //private static final String URL = "jdbc:mysql://localhost:3306/useradmin";
+    //private static final String USERNAME = "root";
+    //private static final String PASSWORD = "1234";
 
     private static Connection singleton;
 

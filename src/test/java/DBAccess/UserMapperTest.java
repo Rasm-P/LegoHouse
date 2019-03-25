@@ -21,10 +21,15 @@ public class UserMapperTest {
 //    (4,'someone@nowhere.com','sesam','customer');
 
     private static Connection testConnection;
-    private static String USER = "root";
-    private static String USERPW = "1234";
+    private static String USER = "LegoReader";
+    private static String USERPW = "LegoHouse1998";
     private static String DBNAME = "useradmin";
-    private static String HOST = "localhost";
+    private static String HOST = "178.62.228.96";
+    
+    //private static String USER = "root";
+    //private static String USERPW = "1234";
+    //private static String DBNAME = "useradmin";
+    //private static String HOST = "localhost";
 
     @Before
     public void setUp() {
@@ -100,7 +105,7 @@ public class UserMapperTest {
         }
 
         try {
-            String SQL = "SELECT id, role FROM Userstest "
+            String SQL = "SELECT id, role FROM userstest "
                     + "WHERE email=? AND password=?";
             PreparedStatement ps = testConnection.prepareStatement(SQL);
             ps.setString(1, original.getEmail());
