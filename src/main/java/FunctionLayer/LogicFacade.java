@@ -10,6 +10,7 @@ import java.util.List;
  * @author Rasmus2
  */
 public class LogicFacade {
+    
 
     public static User login(String email, String password) throws LoginSampleException {
         return UserMapper.login(email, password);

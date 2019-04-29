@@ -10,15 +10,16 @@ import java.util.List;
  * @author Rasmus2
  */
 <span class="nc" id="L12">public class LogicFacade {</span>
+    
 
     public static User login(String email, String password) throws LoginSampleException {
-<span class="nc" id="L15">        return UserMapper.login(email, password);</span>
+<span class="nc" id="L16">        return UserMapper.login(email, password);</span>
     }
 
     public static User createUser(String email, String password) throws LoginSampleException {
-<span class="nc" id="L19">        User user = new User(email, password, &quot;customer&quot;);</span>
-<span class="nc" id="L20">        UserMapper.createUser(user);</span>
-<span class="nc" id="L21">        return user;</span>
+<span class="nc" id="L20">        User user = new User(email, password, &quot;customer&quot;);</span>
+<span class="nc" id="L21">        UserMapper.createUser(user);</span>
+<span class="nc" id="L22">        return user;</span>
     }
 
     public static Styklist stykliste(float length, float width, float height) throws OrderSampleException {
@@ -27,61 +28,61 @@ import java.util.List;
         float TotalWithHeigth1x2;
         float TotalWindows2x2;
         float TotalDoors3x2;
-<span class="nc" id="L30">        float Window = 4;</span>
-<span class="nc" id="L31">        float Door = 6;</span>
-<span class="nc" id="L32">        float Reference2x4 = 8;</span>
-<span class="nc" id="L33">        float Reference2x2 = 4;</span>
-<span class="nc" id="L34">        float Reference1x2 = 2;</span>
+<span class="nc" id="L31">        float Window = 4;</span>
+<span class="nc" id="L32">        float Door = 6;</span>
+<span class="nc" id="L33">        float Reference2x4 = 8;</span>
+<span class="nc" id="L34">        float Reference2x2 = 4;</span>
+<span class="nc" id="L35">        float Reference1x2 = 2;</span>
 
-<span class="nc" id="L36">        float total = ((length * width) * height) / Reference2x4;</span>
-<span class="nc" id="L37">        total = total / 2;</span>
-<span class="nc" id="L38">        total = total - (Window + Door);</span>
+<span class="nc" id="L37">        float total = ((length * width) * height) / Reference2x4;</span>
+<span class="nc" id="L38">        total = total / 2;</span>
+<span class="nc" id="L39">        total = total - (Window + Door);</span>
 
-<span class="nc bnc" id="L40" title="All 2 branches missed.">        if ((total % 1) != 0) {</span>
-<span class="nc" id="L41">            float Decimal = total - (int) total;</span>
-<span class="nc" id="L42">            total = (float) Math.floor(total);</span>
-<span class="nc" id="L43">            TotalWithHeigth2x4 = total / Reference2x4;</span>
-<span class="nc" id="L44">            TotalWithHeigth2x2 = (total * 2) / Reference2x2;</span>
-<span class="nc bnc" id="L45" title="All 2 branches missed.">            if ((Decimal * Reference2x4 * 2 / 2) % 2 == 0) {</span>
-<span class="nc" id="L46">                TotalWithHeigth1x2 = (Decimal * Reference2x4 * 2) / Reference1x2;</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        if ((total % 1) != 0) {</span>
+<span class="nc" id="L42">            float Decimal = total - (int) total;</span>
+<span class="nc" id="L43">            total = (float) Math.floor(total);</span>
+<span class="nc" id="L44">            TotalWithHeigth2x4 = total / Reference2x4;</span>
+<span class="nc" id="L45">            TotalWithHeigth2x2 = (total * 2) / Reference2x2;</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">            if ((Decimal * Reference2x4 * 2 / 2) % 2 == 0) {</span>
+<span class="nc" id="L47">                TotalWithHeigth1x2 = (Decimal * Reference2x4 * 2) / Reference1x2;</span>
             } else {
-<span class="nc" id="L48">                TotalWithHeigth1x2 = ((float) Math.ceil(Decimal) * Reference2x4 * 2 / 2) / Reference1x2;</span>
+<span class="nc" id="L49">                TotalWithHeigth1x2 = ((float) Math.ceil(Decimal) * Reference2x4 * 2 / 2) / Reference1x2;</span>
             }
-<span class="nc" id="L50">            TotalWindows2x2 = height / Window;</span>
-<span class="nc" id="L51">            TotalDoors3x2 =  height / Door;</span>
-<span class="nc" id="L52">        } else {</span>
-<span class="nc" id="L53">            TotalWithHeigth2x4 = total / Reference2x4;</span>
-<span class="nc" id="L54">            TotalWithHeigth2x2 = (total * 2) / Reference2x2;</span>
-<span class="nc" id="L55">            TotalWithHeigth1x2 = 0;</span>
-<span class="nc" id="L56">            TotalWindows2x2 = height / Window;</span>
-<span class="nc" id="L57">            TotalDoors3x2 = height / Door;</span>
+<span class="nc" id="L51">            TotalWindows2x2 = height / Window;</span>
+<span class="nc" id="L52">            TotalDoors3x2 =  height / Door;</span>
+<span class="nc" id="L53">        } else {</span>
+<span class="nc" id="L54">            TotalWithHeigth2x4 = total / Reference2x4;</span>
+<span class="nc" id="L55">            TotalWithHeigth2x2 = (total * 2) / Reference2x2;</span>
+<span class="nc" id="L56">            TotalWithHeigth1x2 = 0;</span>
+<span class="nc" id="L57">            TotalWindows2x2 = height / Window;</span>
+<span class="nc" id="L58">            TotalDoors3x2 = height / Door;</span>
         }
-<span class="nc" id="L59">        Styklist orderLine = new Styklist(TotalWithHeigth2x4, TotalWithHeigth2x2, TotalWithHeigth1x2, TotalWindows2x2, TotalDoors3x2);</span>
-<span class="nc" id="L60">        return orderLine;</span>
+<span class="nc" id="L60">        Styklist orderLine = new Styklist(TotalWithHeigth2x4, TotalWithHeigth2x2, TotalWithHeigth1x2, TotalWindows2x2, TotalDoors3x2);</span>
+<span class="nc" id="L61">        return orderLine;</span>
     }
 
     public static void createOrder(User user, float length, float width, float height) throws OrderSampleException {
-<span class="nc" id="L64">        Order order = new Order(user.getId(), LocalDate.now(), length, width, height);</span>
-<span class="nc" id="L65">        OrderMapper.createOrder(order, user);</span>
-<span class="nc" id="L66">    }</span>
+<span class="nc" id="L65">        Order order = new Order(user.getId(), LocalDate.now(), length, width, height);</span>
+<span class="nc" id="L66">        OrderMapper.createOrder(order, user);</span>
+<span class="nc" id="L67">    }</span>
 
     public static List&lt;Order&gt; getAllOrdersList() throws OrderSampleException {
-<span class="nc" id="L69">        List&lt;Order&gt; list = OrderMapper.getAllOrders();</span>
-<span class="nc" id="L70">        return list;</span>
+<span class="nc" id="L70">        List&lt;Order&gt; list = OrderMapper.getAllOrders();</span>
+<span class="nc" id="L71">        return list;</span>
     }
 
     public static Order findOrder(int order_id) throws OrderSampleException {
-<span class="nc" id="L74">        Order order = OrderMapper.findSpecificOrder(order_id);</span>
-<span class="nc" id="L75">        return order;</span>
+<span class="nc" id="L75">        Order order = OrderMapper.findSpecificOrder(order_id);</span>
+<span class="nc" id="L76">        return order;</span>
     }
 
     public static void changeOrderStatus(int status, Order order) throws OrderSampleException {
-<span class="nc" id="L79">        OrderMapper.changeOrderStatus(status, order);</span>
-<span class="nc" id="L80">    }</span>
+<span class="nc" id="L80">        OrderMapper.changeOrderStatus(status, order);</span>
+<span class="nc" id="L81">    }</span>
 
     public static List&lt;Order&gt; getOrderHistory(User user) throws OrderSampleException {
-<span class="nc" id="L83">        List&lt;Order&gt; list = OrderMapper.getOrderHistory(user);</span>
-<span class="nc" id="L84">        return list;</span>
+<span class="nc" id="L84">        List&lt;Order&gt; list = OrderMapper.getOrderHistory(user);</span>
+<span class="nc" id="L85">        return list;</span>
     }
 
 }
